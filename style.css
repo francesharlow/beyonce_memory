@@ -1,0 +1,47 @@
+body {
+  background-color: blanchedalmond;
+  font-family: helvetica;
+}
+
+h1 {
+  font-size: 72px;
+  margin: 18px;
+}
+
+.instructions {
+  font-size: 18px;
+  font-style: italic;
+  width: 50%;
+}
+
+.grid {
+  height: 404px;
+  width: 1000px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+}
+
+.column {
+  float: left;
+  width: 200px;
+  height: 412px;
+  border: solid black;
+}
+
+.card {
+  height: 200px;
+  width: 200px;
+  border: solid black;
+}
+
+#reset {
+  float: right;
+  display: block;
+  font-size: 48px;
+  border-radius: 6px;
+}
+
+.hidden {
+  visibility: hidden;
+}
