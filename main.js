@@ -28,9 +28,9 @@ var resetGame = function(){
   
 }
 
-var flipCard = function(event){
+var flipCards = function(event){
   var pickOne = document.createElement('img')
-  randomCard = math.Random();
+  randomCard = Math.random();
   if (randomCard < 0.25) {
     pickOne.src = beyonces[0]
   } else if (0.25 <= randomCard < 0.50) {
@@ -41,12 +41,13 @@ var flipCard = function(event){
     pickOne.src = beyonces[3]
   };
   event.target.appendChild(pickOne)
+  counter++
 }
 
 resetButton.addEventListener('click',resetGame);
 // addButton.addEventListener('click',addAnotherRow);
 
 for (var i = 0; i < allCards.length; i++) {
-  allCards[i].addEventListener('click',flipCard);
+  allCards[i].addEventListener('click',flipCards);
 }
-console.log();
+
