@@ -12,6 +12,8 @@ var player = {
   }
 };
 
+var counter = 0;
+
 var Card = function Card (imgSrc, element) {
   this.imgSrc = imgSrc;
   this.element = element;
@@ -50,7 +52,19 @@ var setUpBoard = function(){
     allCards[i].appendChild(newCardArray[i]);
     allCards[i].addEventListener('click',function () {
       event.target.children[0].classList.remove('hidden');
-      console.log(event.target);
+      if (counter === 0) {
+        player.firstClick = event.target.children[0].src;
+        counter++;
+        console.log(counter);
+        console.log(player);
+      } else if (counter === 1) {
+        player.secondClick = event.target.children[0].src;
+        console.log(counter);
+        console.log(player);
+      };
+      // if (player.firstClick !== player.secondClick) {
+      //   window.setTimeout(event.target.children[0].classList.add('hidden'),1000);
+      // } 
     });
   }
 };
