@@ -92,3 +92,11 @@ for (var i = 0; i < allCards.length; i++) {
 
 // Go through cards array and append each card element 
 
+var player = {
+  firstClick: '',
+  secondClick: '',
+  reset: function(){
+    this.firstClick = undefined;
+    this.secondClick = undefined;
+  }
+}
