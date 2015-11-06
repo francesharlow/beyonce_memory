@@ -2,16 +2,19 @@ console.log("main is linked");
 
 var resetButton = document.querySelector('#reset');
 var allCards = document.querySelectorAll('.card');
-var counter = 0;
+var player = {
+  firstClick: '',
+  secondClick: '',
+  reset: function(){
+    this.firstClick = undefined;
+    this.secondClick = undefined;
+  }
+};
 
-var cardOne = allCards[0]
-var cardTwo = allCards[1]
-var cardThree = allCards[2]
-var cardFour = allCards[3]
-var cardFive = allCards[4]
-var cardSix = allCards[5]
-var cardSeven = allCards[6]
-var cardEight = allCards[7]
+var Cards = function(imageSrc, element) {
+  this.imgSrc = '';
+  this.element = '';
+}
 
 var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif']
 
@@ -24,54 +27,71 @@ var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img
 
 //the game ends when all the pairs have been identified
 
+var startGame = function(event){
+  // take a random sample of the imgs that is equal to half the total number of cards
+  var randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
+  // iterate through the random sample array, creating a new img for each item
+  // give each img an src of 
+  var cardDeck = [];
+  
+
+  var firstStack = randomBeyonceSample.map(function(beyonce.Img){
+    beyonceImg = document.createElement('img');
+    beyonceImg.src = 
+  })
+
+  for (var i = 0; i < randomBeyonces.length; i++){
+    beyonceImg = document.createElement('img');
+  };
+  for (var i = 0; i < randomBeyonces.length; i++){
+    beyonceImg = document.createElement('img');
+  };
+  beyonceImg.src = randomBeyonces[i];
+  event.target.appendChild(beyonceImg);
+
+};
+
+
+var takeTurn = function(){
+  player.firstClick
+  player.secondClick
+} 
+
+// start function
+// iterate through beyonces twice. sample if you want a smaller subset
+// create a new array 'cards' containing card objects
+// var Card = function(imageSrc){
+
+// }
+
+// {
+//   imageSrc: 'askdfajsdkjf',
+//   element: {} 
+// } 
+// card object should have a imageSrc property that points to the src string
+// and a element property that points to the DOM element that you create.
+
+// For shuffling look up underscore.js library.
+
+// Go through cards array and append each card element 
+
+
+
 var resetGame = function(){
   
-}
+};
 
 var addRow = function(){
 
-}
-
-// var pickOne = function(event) {
-//   var firstPick = document.createElement('img');
-//     firstPick.src = shuffle(beyonces)[0];
-//   };
-//   event.target.appendChild(firstPick);
-// }
-
-// var pickOne = function(event) {
-//     var firstPick = document.createElement('img');
-//     randomCard = Math.floor(Math.random() * (beyonces.length - 0)) + 0;
-//     firstPick.src = beyonces[randomCard];
-//     event.target.appendChild(firstPick)
-//     counter++
-//     if (counter === 2 && !firstPick === ) {
-//       .classList.add('hidden')
-//     }
-// };
-
-var flipCards = function(event){
-  var firstPick = document.createElement('img');
-  randomCard = Math.random();
-  if (randomCard < 0.25) {
-    firstPick.src = beyonces[0];
-  } else if (0.25 <= randomCard < 0.50) {
-    firstPick.src = beyonces[1];
-  } else if (0.50 <= randomCard < 0.75) { 
-    firstPick.src = beyonces[2];
-  } else if (0.75 <= randomCard < 1) {
-    firstPick.src = beyonces[3];
-  }
-  event.target.appendChild(firstPick)
 };
 
 // addButton.addEventListener('click',addRow);
 
 resetButton.addEventListener('click',resetGame);
 
-for (var i = 0; i < allCards.length; i++) {
-  allCards[i].addEventListener('click',flipCards);
-}
+startGame();
 
-
+// for (var i = 0; i < allCards.length; i++) {
+//   allCards[i].addEventListener('click',startGame);
+// };
 
