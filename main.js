@@ -13,7 +13,7 @@ var cardSix = allCards[5]
 var cardSeven = allCards[6]
 var cardEight = allCards[7]
 
-var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif']
+var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif']
 
 //add eventListeners to the individual boxes aka 'cards' so that, when clicked,
 // they 'flip over' to show an img
@@ -28,26 +28,50 @@ var resetGame = function(){
   
 }
 
-var flipCards = function(event){
-  var pickOne = document.createElement('img')
-  randomCard = Math.random();
-  if (randomCard < 0.25) {
-    pickOne.src = beyonces[0]
-  } else if (0.25 <= randomCard < 0.50) {
-    pickOne.src = beyonces[1]
-  } else if (0.50 <= randomCard < 0.75) { 
-    pickOne.src = beyonces[2]
-  } else {
-    pickOne.src = beyonces[3]
-  };
-  event.target.appendChild(pickOne)
-  counter++
+var addRow = function(){
+
 }
 
+// var pickOne = function(event) {
+//   var firstPick = document.createElement('img');
+//     firstPick.src = shuffle(beyonces)[0];
+//   };
+//   event.target.appendChild(firstPick);
+// }
+
+// var pickOne = function(event) {
+//     var firstPick = document.createElement('img');
+//     randomCard = Math.floor(Math.random() * (beyonces.length - 0)) + 0;
+//     firstPick.src = beyonces[randomCard];
+//     event.target.appendChild(firstPick)
+//     counter++
+//     if (counter === 2 && !firstPick === ) {
+//       .classList.add('hidden')
+//     }
+// };
+
+var flipCards = function(event){
+  var firstPick = document.createElement('img');
+  randomCard = Math.random();
+  if (randomCard < 0.25) {
+    firstPick.src = beyonces[0];
+  } else if (0.25 <= randomCard < 0.50) {
+    firstPick.src = beyonces[1];
+  } else if (0.50 <= randomCard < 0.75) { 
+    firstPick.src = beyonces[2];
+  } else if (0.75 <= randomCard < 1) {
+    firstPick.src = beyonces[3];
+  }
+  event.target.appendChild(firstPick)
+};
+
+// addButton.addEventListener('click',addRow);
+
 resetButton.addEventListener('click',resetGame);
-// addButton.addEventListener('click',addAnotherRow);
 
 for (var i = 0; i < allCards.length; i++) {
   allCards[i].addEventListener('click',flipCards);
 }
+
+
 

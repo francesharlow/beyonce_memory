@@ -8,7 +8,7 @@ h1 {
   margin: 18px;
 }
 
-.instructions {
+.introduction {
   font-size: 18px;
   font-style: italic;
   width: 50%;
@@ -26,13 +26,14 @@ h1 {
   float: left;
   width: 200px;
   height: 412px;
-  border: solid black;
+/*  border: solid black;*/
 }
 
 .card {
   height: 200px;
   width: 200px;
   border: solid black;
+/*  border-radius: 12px;*/
 }
 
 #reset {
