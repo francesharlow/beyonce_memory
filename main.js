@@ -32,7 +32,7 @@ var newCard;
 var newCardArray = [];
 var newRowArray = [];
 
-var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif'];
+var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif','img/beyonce_7.gif','img/beyonce_8.gif','img/beyonce_9.gif'];
 
 var hideCards = function(){
   player.firstClick.classList.add('hidden');
@@ -55,6 +55,7 @@ var takeTurn = function(event){
   } else if (counter === 1) {
     player.secondClickImg = cardDeck.src;
     player.secondClick = cardDeck;
+
     counter ++;
     // console.log(counter);
     // console.log(player);
@@ -90,6 +91,10 @@ var setUpBoard = function(){
 };
 
 setUpBoard();
+
+// if (_.every(allCards, classList.contains('hidden'))) {
+//   window.alert("Like Beyonce at the Grammy's, you won!!!");  
+// };
   
 var addRow = function(event){
   var allColumns = document.querySelectorAll('.column');
@@ -107,8 +112,9 @@ var resetBoard = function(){
   randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
   // create new array in which each item in the random sample appears exactly twice
   cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
-  //reshuffle the array
+  // reshuffle the array
   _.shuffle(cardDeck);
+  // console.log(cardDeck);
   // iterate through the array, creating a new img for each item, giving each img a corresponding src, adding to it the class of hidden
   for (var i = 0; i < cardDeck.length; i ++){
     newCard = document.createElement('img');
@@ -116,7 +122,6 @@ var resetBoard = function(){
     newCard.classList.add('hidden');
     // push the newly formed card to another array so it can be appended to each item in allCards
     newCardArray.push(newCard);
-    console.log(newCardArray);
     // append each card, with its img, src, and class of hidden, to an existing card div 
     allCards[i].appendChild(newCardArray[i]);
     // console.log(allCards[0]);
@@ -125,6 +130,8 @@ var resetBoard = function(){
   }
 };
 
+resetButton.addEventListener('click',resetBoard);
+
 addButton.addEventListener('click',addRow);
 
-resetButton.addEventListener('click',resetBoard);
+
