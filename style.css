@@ -3,6 +3,10 @@ body {
   font-family: helvetica;
 }
 
+header {
+  margin: 10px;
+}
+
 h1 {
   font-size: 72px;
   margin: 18px;
@@ -36,12 +40,21 @@ h1 {
 /*  border-radius: 12px;*/
 }
 
-#reset {
+button {
+  display: inline;
+  width: 20%;
+  font-size: 24px;
+  border-radius: 6px;
+  margin: 8px;
+}
+
+/*#add {
   float: right;
   display: block;
+  width: 50%;
   font-size: 48px;
   border-radius: 6px;
-}
+}*/
 
 .hidden {
   visibility: hidden;

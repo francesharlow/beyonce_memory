@@ -8,6 +8,7 @@ console.log("main is linked");
 // the game ends when all the pairs have been identified
 
 var resetButton = document.querySelector('#reset');
+var addButton = document.querySelectorAll('#add');
 var allCards = document.querySelectorAll('.card');
 
 var player = {
@@ -25,8 +26,11 @@ var player = {
 
 var counter = 0;
 
+var randomBeyonceSample;
 var cardDeck;
+var newCard;
 var newCardArray = [];
+var newRowArray = [];
 
 var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif'];
 
@@ -39,8 +43,8 @@ var hideCards = function(){
 
 var takeTurn = function(event){
   cardDeck = event.target.children[0];
-  // console.log(cardDeck);
   cardDeck.classList.remove('hidden');
+  // console.log(cardDeck);
   // console.log(counter);
   if (counter === 0) {
     player.firstClickImg = cardDeck.src;
@@ -63,35 +67,64 @@ var takeTurn = function(event){
     }
   }
 };
-  // upon clicking, add the img src to the player object key called firstClick
 
 var setUpBoard = function(){
   // take a random sample of the imgs that is equal to half the total number of cards
-  var randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
+  randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
   // create new array in which each item in the random sample appears exactly twice
   cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
   //reshuffle the array
   _.shuffle(cardDeck);
   // iterate through the array, creating a new img for each item, giving each img a corresponding src, adding to it the class of hidden
   for (var i = 0; i < cardDeck.length; i ++){
-    var newCard = document.createElement('img');
+    newCard = document.createElement('img');
     newCard.src = cardDeck[i];
     newCard.classList.add('hidden');
     // push the newly formed card to another array so it can be appended to each item in allCards
     newCardArray.push(newCard);
-    // append each card, with its img, src, and class of hidden, to an existing card div 
+    // append each card, with its img, src, and class of hidden, to an existing card div
     allCards[i].appendChild(newCardArray[i]);
-    // add an event listener to each card so that, when clicked, it removes the class of hidden
+    // add an event listener to each card so that, when clicked, it invokes takeTurn()
     allCards[i].addEventListener('click', takeTurn);
   }
 };
 
 setUpBoard();
-
-var addRow = function(){
-
+  
+var addRow = function(event){
+  var allColumns = document.querySelectorAll('.column');
+  // console.log(allColumns);
+  for (var i = 0; i < allColumns.length; i ++) {
+    var newRow = document.createElement('div');
+    newRow.classList.add('card');
+    newRowArray.push(newRow);
+    allColumns[i].appendChild(newRowArray[i]);
+  }
 };
 
-// addButton.addEventListener('click',addRow);
+var resetBoard = function(){
+  // take a random sample of the imgs that is equal to half the total number of cards
+  randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
+  // create new array in which each item in the random sample appears exactly twice
+  cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
+  //reshuffle the array
+  _.shuffle(cardDeck);
+  // iterate through the array, creating a new img for each item, giving each img a corresponding src, adding to it the class of hidden
+  for (var i = 0; i < cardDeck.length; i ++){
+    newCard = document.createElement('img');
+    newCard.src = cardDeck[i];
+    newCard.classList.add('hidden');
+    // push the newly formed card to another array so it can be appended to each item in allCards
+    newCardArray.push(newCard);
+    console.log(newCardArray);
+    // append each card, with its img, src, and class of hidden, to an existing card div 
+    allCards[i].appendChild(newCardArray[i]);
+    // console.log(allCards[0]);
+    // add an event listener to each card so that, when clicked, it invokes takeTurn()
+    allCards[i].addEventListener('click', takeTurn);
+  }
+};
 
-resetButton.addEventListener('click',setUpBoard);
+addButton.addEventListener('click',addRow);
+
+resetButton.addEventListener('click',resetBoard);
