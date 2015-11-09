@@ -8,7 +8,7 @@ console.log("main is linked");
 // the game ends when all the pairs have been identified
 
 var resetButton = document.querySelector('#reset');
-var addButton = document.querySelectorAll('#add');
+var addButton = document.querySelector('#add');
 var allCards = document.querySelectorAll('.card');
 
 var player = {
@@ -32,7 +32,7 @@ var newCard;
 var newCardArray = [];
 var newRowArray = [];
 
-var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif','img/beyonce_7.gif','img/beyonce_8.gif','img/beyonce_9.gif'];
+var beyonces = ['img/beyonce_1.gif','img/beyonce_2.gif','img/beyonce_3.gif','img/beyonce_4.gif','img/beyonce_5.gif','img/beyonce_6.gif','img/beyonce_7.gif','img/beyonce_8.gif','img/beyonce_9.gif','img/beyonce_10.gif','img/beyonce_11.gif'];
 
 var hideCards = function(){
   player.firstClick.classList.add('hidden');
@@ -44,26 +44,24 @@ var hideCards = function(){
 var takeTurn = function(event){
   cardDeck = event.target.children[0];
   cardDeck.classList.remove('hidden');
-  // console.log(cardDeck);
-  // console.log(counter);
   if (counter === 0) {
+    // push the img src to a key-value pair in the object called player
     player.firstClickImg = cardDeck.src;
+    // push the div itself into player object so it can be hidden again if needed
     player.firstClick = cardDeck;
+    // increase counter by 1
     counter++;
-    // console.log(counter);
-    // console.log(player);
   } else if (counter === 1) {
     player.secondClickImg = cardDeck.src;
     player.secondClick = cardDeck;
-
     counter ++;
-    // console.log(counter);
-    // console.log(player);
-    if (player.firstClickImg !== player.secondClickImg) {
-      // console.log(counter);
-      // console.log(cardDeck.classList);
-      window.setTimeout(hideCards, 1500);
-    } else {
+    // compare imgs to determine if same
+      if (player.firstClickImg !== player.secondClickImg) {
+        // console.log(cardDeck.classList);
+        // if imgs aren't the same, hide them again after 1.5 seconds
+        window.setTimeout(hideCards, 1500);
+      } else {
+        // reset counter to zero
       counter = 0;
     }
   }
@@ -71,6 +69,7 @@ var takeTurn = function(event){
 
 var setUpBoard = function(){
   // take a random sample of the imgs that is equal to half the total number of cards
+  // underscore library courtesy of https://github.com/jashkenas/underscore
   randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
   // create new array in which each item in the random sample appears exactly twice
   cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
@@ -91,12 +90,8 @@ var setUpBoard = function(){
 };
 
 setUpBoard();
-
-// if (_.every(allCards, classList.contains('hidden'))) {
-//   window.alert("Like Beyonce at the Grammy's, you won!!!");  
-// };
   
-var addRow = function(event){
+var addRow = function(){
   var allColumns = document.querySelectorAll('.column');
   // console.log(allColumns);
   for (var i = 0; i < allColumns.length; i ++) {
@@ -108,24 +103,19 @@ var addRow = function(event){
 };
 
 var resetBoard = function(){
-  // take a random sample of the imgs that is equal to half the total number of cards
+  var allCards = document.querySelectorAll('.card');
   randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
-  // create new array in which each item in the random sample appears exactly twice
   cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
-  // reshuffle the array
   _.shuffle(cardDeck);
   // console.log(cardDeck);
-  // iterate through the array, creating a new img for each item, giving each img a corresponding src, adding to it the class of hidden
   for (var i = 0; i < cardDeck.length; i ++){
     newCard = document.createElement('img');
     newCard.src = cardDeck[i];
     newCard.classList.add('hidden');
-    // push the newly formed card to another array so it can be appended to each item in allCards
     newCardArray.push(newCard);
-    // append each card, with its img, src, and class of hidden, to an existing card div 
+    // console.log(cardDeck);
+    // console.log(allCards);
     allCards[i].appendChild(newCardArray[i]);
-    // console.log(allCards[0]);
-    // add an event listener to each card so that, when clicked, it invokes takeTurn()
     allCards[i].addEventListener('click', takeTurn);
   }
 };
