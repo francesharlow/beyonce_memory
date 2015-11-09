@@ -15,6 +15,6 @@ Here's how concentration (aka memory) works: It's usually a single-player game -
 ###<b>Description of your app: </b><br>
 Beyoncentration is a memory game, using gifs instead of static images. The gifs are randomly sampled from a list and then assigned to the boxes on the grid, so every game is different. It is meant to be scalable, so the user can add rows to the bottom of the "board" to make it harder. <br>
 
-<b>Link to your playable app deployed on Github Pages: </b><br>
-
+###<b>Link to your playable app deployed on Github Pages: </b><br>
+Play it here.
 
