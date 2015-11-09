@@ -9,13 +9,13 @@ h1 {
 }
 
 .introduction {
-  font-size: 18px;
+  font-size: 12px;
   font-style: italic;
   width: 50%;
 }
 
 .grid {
-  height: 404px;
+  height: 1200px;
   width: 1000px;
   display: block;
   margin: 0 auto;

@@ -96,7 +96,7 @@ var player = {
   firstClick: '',
   secondClick: '',
   reset: function(){
-    this.firstClick = undefined;
-    this.secondClick = undefined;
+    this.firstClikc = undefined;
+    this.secondClick
   }
 }
