@@ -100,13 +100,22 @@ var addRow = function(){
     newRowArray.push(newRow);
     allColumns[i].appendChild(newRowArray[i]);
   }
+  resetBoard();
 };
 
 var resetBoard = function(){
   var allCards = document.querySelectorAll('.card');
+  // console.log(allCards);
+  // console.log(newCardArray);
+  // for (var i = 0; i < cardDeck.length; i ++){
+  //   allCards[i].removeChild(newCardArray[i]);
+  //   allCards[i].removeEventListener('click',takeTurn);
+  // };
+  // take a new random sample of the imgs that is equal to half the total number of cards
   randomBeyonceSample = _.sample(beyonces,(allCards.length / 2));
   cardDeck = _.flatten([randomBeyonceSample,randomBeyonceSample]);
   _.shuffle(cardDeck);
+  var newCardArray = [];
   // console.log(cardDeck);
   for (var i = 0; i < cardDeck.length; i ++){
     newCard = document.createElement('img');
@@ -115,7 +124,9 @@ var resetBoard = function(){
     newCardArray.push(newCard);
     // console.log(cardDeck);
     // console.log(allCards);
+    // console.log(newCardArray);
     allCards[i].appendChild(newCardArray[i]);
+    // console.log(allCards[i]);
     allCards[i].addEventListener('click', takeTurn);
   }
 };
