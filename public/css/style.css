@@ -1,5 +1,5 @@
 * {
-  border-color: black;
+  background-color: #F7CAC9;
 }
 
 .title {
@@ -10,7 +10,7 @@
   z-index:100;
 }
 
-.title img {
+.title > img {
   padding:0px;
   margin:0px;
   border: none;
