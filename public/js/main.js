@@ -1,4 +1,4 @@
-console.log("main is linked");
+console.log("main.js is linked");
 
 // Pseudocoding
 // add eventListeners to the individual units aka 'cards' so that, when clicked,
@@ -7,14 +7,18 @@ console.log("main is linked");
 // when the imgs are a match, they remain visible
 // the game ends when all the pairs have been identified
 
-var counter = 0;
 
-var resetButton = document.querySelector('#reset');
-var addButton = document.querySelector('#add');
+var startBtn = document.querySelector('#start');
+var pauseBtn = document.querySelector('#pause');
+var resetBtn = document.querySelector('#reset');
+var addBtn = document.querySelector('#add');
+
 var allCards = document.querySelectorAll('.l-box');
 
-var player = {
-  firstClickImg: '',
+var counter = 0;
+
+var turn = {
+  firstImg: '',
   secondClickImg: '',
   firstClick: '',
   secondClick: '',
@@ -25,7 +29,6 @@ var player = {
     this.secondClickImg = undefined;
   }
 };
-
 
 
 var randomBeyonceSample;
