@@ -9,7 +9,13 @@
     <button id="reset">Reset</button>
     <button id="add">Add</button>
   </div>
-  <div class="pure-u-1-4 l-box"><p>Card 1</p>
+  <div>
+    <ul>
+      <% @results.each do |result| %>
+        <li class="pure-u-1-4 l-box"><a href="<%= result.docs.web_url %>"><%= result.docs.headline.main %></a></li>
+    </ul>
+  </div>
+<!--   <div class="pure-u-1-4 l-box"><p>Card 1</p>
   </div>
   <div class="pure-u-1-4 l-box"><p>Card 2</p>
   </div>
@@ -24,6 +30,8 @@
   <div class="pure-u-1-4 l-box"><p>Card 7</p>
   </div>
   <div class="pure-u-1-4 l-box"><p>Card 8</p>
-  </div>
+  </div> -->
 </div>
+
+
 

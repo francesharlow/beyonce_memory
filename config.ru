@@ -1,4 +1,7 @@
 require "sinatra"
+require "httparty"
+require "json"
+require "open-uri'"
 
 require_relative "db/config"
 require_relative "server"
@@ -11,3 +14,4 @@ else
 end
 
 run App::Server
+
